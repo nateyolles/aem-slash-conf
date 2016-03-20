@@ -1,0 +1,16 @@
+<p data-sly-test="${properties.text}">Text property: ${properties.text}</p>
+
+<div data-sly-use.social="com.nateyolles.aem.slashconfdemo.core.models.SocialMediaModel">
+    <div data-sly-test.twitter="${social.twitter}">
+        <img src="/content/dam/slashconfdemo/twitter.png/jcr:content/renditions/cq5dam.thumbnail.48.48.png" alt="Twitter logo">
+        <a href="${social.twitterAccount}" data-sly-text="${social.twitterAccount @ context='uri'}">htp://twitter.com/companyname</a>
+    </div>
+    <div data-sly-test.facebook="${social.facebook}">
+        <img src="/content/dam/slashconfdemo/facebook.png/jcr:content/renditions/cq5dam.thumbnail.48.48.png" alt="Facebook logo">
+        <a href="${social.facebookAccount}" data-sly-text="${social.facebookAccount @ context='uri'}">http://www.facebook.com/companyname</a>
+    </div>
+    <p data-sly-test="${!twitter && !facebook}">
+        <img src="/content/dam/slashconfdemo/phone.png/jcr:content/renditions/cq5dam.thumbnail.48.48.png" alt="Phone icon"> 
+        Please contact us by phone.
+    </p>
+</div>

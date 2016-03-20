@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <wcm
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="nt:unstructured">
+        <foundation
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="nt:unstructured">
+            <components
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="nt:unstructured">
+                <page
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="nt:unstructured">
+                    <policy
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Teaser Page Policy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        clientlibs="we-retail.sample"/>
+                </page>
+                <responsivegrid jcr:primaryType="nt:unstructured">
+                    <locked
+                        jcr:description="Policy of the locked parsys"
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Locked Parsys Policy"
+                        sling:resourceType="wcm/core/components/policy/policy"
+                        components="group:General"/>
+                </responsivegrid>
+            </components>
+        </foundation>
+    </wcm>
+</jcr:root>

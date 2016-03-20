@@ -1,0 +1,12 @@
+.DS_Store
+
+.vlt
+.classpath
+.project
+.settings/
+.metadata/
+target/
+
+#Intellij
+.idea/
+*.iml

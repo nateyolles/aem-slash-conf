@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/slashconfdemo">
+        <exclude pattern="/apps/slashconfdemo/install" />
+    </filter>
+    <filter root="/conf"/>
+    <filter root="/apps/sling" />
+    <filter root="/etc/designs/slashconfdemo"/>
+</workspaceFilter>
