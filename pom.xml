@@ -383,9 +383,10 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-              <groupId>com.adobe.acs</groupId>
-              <artifactId>acs-aem-commons</artifactId>
-              <version>2.3.0</version>
+              <groupId>com.adobe.aem</groupId>
+              <artifactId>uber-jar</artifactId>
+              <version>6.1.0</version>
+              <classifier>obfuscated-apis</classifier>
               <scope>provided</scope>
             </dependency>
 
@@ -396,7 +397,6 @@
                 <scope>provided</scope>
             </dependency>
 
-    
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.models.api</artifactId>
@@ -425,10 +425,10 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-        <groupId>biz.aQute</groupId>
-        <artifactId>bndlib</artifactId>
-        <version>1.50.0</version>
-        <scope>provided</scope>
+                <groupId>biz.aQute</groupId>
+                <artifactId>bndlib</artifactId>
+                <version>1.50.0</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.osgi</groupId>

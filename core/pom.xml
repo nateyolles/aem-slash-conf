@@ -78,7 +78,7 @@
         </profile>
     </profiles>
     <dependencies>
-        <dependency>
+        <!-- <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.models.impl</artifactId>
             </dependency>
@@ -87,13 +87,20 @@
             <dependency>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>org.apache.sling.models.api</artifactId>
-            </dependency>
-
+            </dependency> -->
+<!-- 
             <dependency>
                 <groupId>com.adobe.granite</groupId>
                 <artifactId>com.adobe.granite.confmgr</artifactId>
-            </dependency>
+            </dependency> -->
 
+           <dependency>
+              <groupId>com.adobe.aem</groupId>
+              <artifactId>uber-jar</artifactId>
+              <version>6.1.0</version>
+              <classifier>obfuscated-apis</classifier>
+              <scope>provided</scope>
+            </dependency>
 
         <!-- OSGi Dependencies -->
         <dependency>
