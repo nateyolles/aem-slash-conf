@@ -21,12 +21,19 @@ mvn install:install-file -Dfile=com.adobe.granite.confmgr-1.0.0.jar -DgroupId=co
  */
 package com.nateyolles.aem.slashconfdemo.core.models;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
+import org.apache.sling.api.resource.ResourceResolverFactory;
 import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
@@ -34,20 +41,27 @@ import org.apache.sling.settings.SlingSettingsService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import com.adobe.granite.confmgr.Conf;
+import com.adobe.granite.confmgr.ConfMgr;
 import com.day.cq.wcm.api.Page;
 
 @Model(adaptables = SlingHttpServletRequest.class)
 public class SocialMediaModel {
 
 
-//	  @SlingObject
-//	  private Resource currentResource;
+	  @SlingObject
+	  private Resource currentResource;
 	
 	  @Inject
 	  private Page currentPage;
 	  
 //    @Inject
 //    private SlingSettingsService settings;
+	  
+	  @Inject
+	  private ConfMgr confMgr;
+	  
+	  @Inject
+	  private ResourceResolverFactory resolverFactory;
 
 //    @Inject @Named("sling:resourceType") @Default(values="No resourceType")
 //    protected String resourceType;
@@ -57,15 +71,31 @@ public class SocialMediaModel {
 
     @PostConstruct
     protected void init() {
+
+    	Conf confFromService = confMgr.getConf(currentPage.adaptTo(Resource.class));
+    	
+    	
+    	try {
+    		Map<String, Object> serviceParams = new HashMap<String, Object>();
+            serviceParams.put(ResourceResolverFactory.SUBSERVICE, "readService");
+			ResourceResolver serviceResolver = resolverFactory.getServiceResourceResolver(serviceParams);
+			
+			Conf confFromResolver = confMgr.getConf(currentPage.adaptTo(Resource.class), serviceResolver);
+		} catch (LoginException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     	Conf conf = currentPage.adaptTo(Conf.class);
 
-    	facebookSettings = conf.getItem("socialmedia/facebook");
-//    	boolean facebookEnabled = facebookSettings.get("enabled", false);
-//    	String facebookAccount = facebookSettings.get("account", String.class);
-    	
+    	facebookSettings = conf.getItem("socialmedia/facebook");    	
     	twitterSettings = conf.getItem("socialmedia/twitter");
-//    	boolean twitterEnabled = facebookSettings.get("enabled", false);
-//    	String twitterAccount = facebookSettings.get("account", String.class);
+    	
+    	List<ValueMap> facebookSettingsList = conf.getList("socialmedia/facebook");
+    	
+    	for (ValueMap properties : facebookSettingsList) {
+    		properties.get("account", String.class);
+    	}
     }
 
     public boolean isFacebook() {

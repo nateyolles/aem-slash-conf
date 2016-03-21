@@ -56,6 +56,16 @@ The project comes with the auto-public repository configured. To setup the repos
 ## Install com.adobe.granite.confmgr dependency
 
 ````
+<dependency>
+    <groupId>com.adobe.aem</groupId>
+    <artifactId>uber-jar</artifactId>
+    <version>6.1.0</version>
+    <classifier>obfuscated-apis</classifier>
+    <scope>provided</scope>
+</dependency>
+````
+
+````
 wget --user admin --password admin http://localhost:4502/libs/cq/commons/install/com.adobe.granite.confmgr-1.0.0.jar &&
 mvn install:install-file -Dfile=com.adobe.granite.confmgr-1.0.0.jar -DgroupId=com.adobe.granite -DartifactId=com.adobe.granite.confmgr -Dversion=1.0.0 -Dpackaging=jar
 ````
