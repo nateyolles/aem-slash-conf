@@ -2,6 +2,56 @@
 
 The project is a simple demonstration of Adobe Experience Manager's new `/conf` node and the `com.adobe.granite.confmgr.ConfMgr` service.
 
+## Description
+
+### Sites
+
+The demonstration is a multi-tenant project containing 3 companies and a sub project:
+
+* Pied Piper: [http://localhost:4502/content/piedpiper/en.html](http://localhost:4502/content/piedpiper/en.html)
+* Aviator: [http://localhost:4502/content/aviato/en.html](http://localhost:4502/content/aviato/en.html)
+* Hooli: [http://localhost:4502/content/hooli/en.html](http://localhost:4502/content/hooli/en.html)
+* Hooli XYZ subproject: [http://localhost:4502/content/hooli/hoolixyz/en.html](http://localhost:4502/content/hooli/hoolixyz/en.html)
+
+### Component
+
+All sites use one custom component that displays the correct Twitter and Facebook links as per the sites corresponding configuration.
+
+* Sling Model: /core/src/main/java/com/nateyolles/aem/slashconfdemo/core/models/SocialMediaModel.java
+* Sightly Component: /ui.apps/src/main/content/jcr_root/apps/slashconfdemo/components/content/socialmedia/socialmedia.html
+
+### Configurations
+
+The global settings disable both sites:
+
+````
+/conf/global/settings/socialmedia/facebook/jcr:content/@enabled = false
+/conf/global/settings/socialmedia/twitter/jcr:content/@enabled = false
+````
+
+Hooli enables and configures both sites:
+````
+/conf/tenants/hooli/settings/socialmedia/twitter
+/conf/tenants/hooli/settings/socialmedia/facebook
+````
+
+Hooli XYZ inherits from Hooli but overwrites Twitter:
+````
+/conf/tenants/hooli/hoolixyz/settings/socialmedia/twitter
+````
+
+Pied Piper configures both sites. Aviato does not have a configuration and thus falls back to the Global settings.
+
+### Linking to configurations
+
+The sites Pied Piper and Hooli, and well as the subsite Hooli XYZ, are linked to their perspective configurations:
+
+````
+/content/piedpiper/jcr:content/@cq:conf = /conf/tenants/piedpiper
+/content/hooli/jcr:content/@cq:conf = /conf/tenants/hooli
+/content/hooli/hoolixyz/jcr:content/@cq:conf = /conf/tenants/hooli/hoolixyz
+````
+
 ## Modules
 
 The main parts of the template are:
