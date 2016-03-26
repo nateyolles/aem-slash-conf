@@ -404,13 +404,6 @@
                 <scope>provided</scope>
             </dependency>
 
-            <dependency>
-                <groupId>com.adobe.granite</groupId>
-                <artifactId>com.adobe.granite.confmgr</artifactId>
-                <version>1.0.0</version>
-                <scope>provided</scope>
-            </dependency>
-
             <!-- OSGi Dependencies -->
             <dependency>
                 <groupId>org.apache.felix</groupId>
