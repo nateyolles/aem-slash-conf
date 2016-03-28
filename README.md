@@ -2,6 +2,8 @@
 
 The project is a simple demonstration of Adobe Experience Manager's new `/conf` node and the `com.adobe.granite.confmgr.ConfMgr` service.
 
+See [http://www.nateyolles.com/blog/2016/03/aem-slash-conf-and-confmgr](http://www.nateyolles.com/blog/2016/03/aem-slash-conf-and-confmgr) for a detailed description of `/conf` and `com.adobe.granite.confmgr.ConfMgr`.
+
 ## Description
 
 ### Sites
